@@ -24,10 +24,6 @@ app.use("/api/playlists/", playListRoutes);
 app.use("/api/", searchRoutes);
 // app.use("/", clientRoutes);
 
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname + '/index.html'))
-})  
-
 app.get('/css-initial', (req,res)=>{
     res.sendFile(path.resolve(__dirname+'/build/static/css/2.b28305bc.chunk.css'))
 })
@@ -35,7 +31,6 @@ app.get('/css-initial', (req,res)=>{
 app.get('/css-final', (req,res)=>{
     res.sendFile(path.resolve(__dirname+'/build/static/css/main.b1eed2c3.chunk.css'))
 })
-
 app.get('/js-inital', (req,res)=>{
     res.sendFile(path.resolve(__dirname+'/build/static/js/2.9de7726f.chunk.js'))
 })
@@ -45,6 +40,9 @@ app.get('/js-final', (req,res)=>{
 app.get('/icon', (req,res)=>{
     res.sendFile(path.resolve(__dirname+'/build/favicon.png'))
 })
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname + '/index.html'))
+})  
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
