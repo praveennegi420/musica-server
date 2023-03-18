@@ -23,7 +23,7 @@ app.use("/api/playlists/", playListRoutes);
 app.use("/api/", searchRoutes);
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname + '/build/index.html'))
+    res.sendFile(path.resolve(__dirname + '/index.html'))
 })
 
 const port = process.env.PORT || 8080;
