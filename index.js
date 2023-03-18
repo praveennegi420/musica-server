@@ -9,6 +9,7 @@ const authRoutes = require("./routes/auth");
 const songRoutes = require("./routes/songs");
 const playListRoutes = require("./routes/playLists");
 const searchRoutes = require("./routes/search");
+const clientRoutes = require('./routes/client')
 const app = express();
 
 connection();
@@ -21,9 +22,28 @@ app.use("/api/login/", authRoutes);
 app.use("/api/songs/", songRoutes);
 app.use("/api/playlists/", playListRoutes);
 app.use("/api/", searchRoutes);
+// app.use("/", clientRoutes);
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname + '/index.html'))
+})  
+
+app.get('/css-initial', (req,res)=>{
+    res.sendFile(path.resolve(__dirname+'/build/static/css/2.b28305bc.chunk.css'))
+})
+
+app.get('/css-final', (req,res)=>{
+    res.sendFile(path.resolve(__dirname+'/build/static/css/main.b1eed2c3.chunk.css'))
+})
+
+app.get('/js-inital', (req,res)=>{
+    res.sendFile(path.resolve(__dirname+'/build/static/js/2.9de7726f.chunk.js'))
+})
+app.get('/js-final', (req,res)=>{
+    res.sendFile(path.resolve(__dirname+'/build/static/js/main.f052993f.chunk.js'))
+})
+app.get('/icon', (req,res)=>{
+    res.sendFile(path.resolve(__dirname+'/build/favicon.png'))
 })
 
 const port = process.env.PORT || 8080;
